@@ -1,6 +1,6 @@
 package common
 
-// PaymentStatus ...
+// PaymentAction ...
 type PaymentAction string
 
 const (
