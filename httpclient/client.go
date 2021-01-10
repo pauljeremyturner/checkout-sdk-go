@@ -271,6 +271,51 @@ func (c *HTTPClient) setIdempotencyKey(req *http.Request, params *checkout.Param
 	}
 }
 
+func (c *HTTPClient) setProvider(req *http.Request, params *checkout.Params) {
+	if params != nil {
+		if params.Provider != nil {
+			provider := strings.TrimSpace(*params.Provider)
+			req.Header.Add("Cko-Provider", provider)
+		}
+		for k, v := range params.Headers {
+			for _, line := range v {
+				// Use Set to override the default value possibly set before
+				req.Header.Set(k, line)
+			}
+		}
+	}
+}
+
+func (c *HTTPClient) setSourceID(req *http.Request, params *checkout.Params) {
+	if params != nil {
+		if params.SourceID != nil {
+			sourceID := strings.TrimSpace(*params.SourceID)
+			req.Header.Add("Cko-Source-Id", sourceID)
+		}
+		for k, v := range params.Headers {
+			for _, line := range v {
+				// Use Set to override the default value possibly set before
+				req.Header.Set(k, line)
+			}
+		}
+	}
+}
+
+func (c *HTTPClient) setCKOAuthorization(req *http.Request, params *checkout.Params) {
+	if params != nil {
+		if params.Authorization != nil {
+			authorization := strings.TrimSpace(*params.Authorization)
+			req.Header.Add("Cko-Authorization", authorization)
+		}
+		for k, v := range params.Headers {
+			for _, line := range v {
+				// Use Set to override the default value possibly set before
+				req.Header.Set(k, line)
+			}
+		}
+	}
+}
+
 func responseToError(apiRes *checkout.StatusResponse, body []byte) *common.Error {
 	err := &common.Error{}
 	if apiRes.StatusCode == 422 {
