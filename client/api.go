@@ -5,6 +5,7 @@ import (
 	"github.com/checkout/checkout-sdk-go/disputes"
 	"github.com/checkout/checkout-sdk-go/events"
 	"github.com/checkout/checkout-sdk-go/files"
+	"github.com/checkout/checkout-sdk-go/hostedpayments"
 	"github.com/checkout/checkout-sdk-go/payments"
 	"github.com/checkout/checkout-sdk-go/reconciliation"
 	"github.com/checkout/checkout-sdk-go/sources"
@@ -22,6 +23,7 @@ type API struct {
 	Disputes       *disputes.Client
 	Files          *files.Client
 	Reconciliation *reconciliation.Client
+	HostedPayment  *hostedpayments.Client
 }
 
 // Init -
@@ -39,6 +41,7 @@ func (a *API) Init(secretKey string, useSandbox bool, publicKey *string) {
 	a.Disputes = disputes.NewClient(*config)
 	a.Files = files.NewClient(*config)
 	a.Reconciliation = reconciliation.NewClient(*config)
+	a.HostedPayment = hostedpayments.NewClient(*config)
 }
 
 // New -
