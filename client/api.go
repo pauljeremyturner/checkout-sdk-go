@@ -9,6 +9,7 @@ import (
 	"github.com/checkout/checkout-sdk-go/reconciliation"
 	"github.com/checkout/checkout-sdk-go/sources"
 	"github.com/checkout/checkout-sdk-go/tokens"
+	"github.com/checkout/checkout-sdk-go/vaultexchange"
 	"github.com/checkout/checkout-sdk-go/webhooks"
 )
 
@@ -22,6 +23,7 @@ type API struct {
 	Disputes       *disputes.Client
 	Files          *files.Client
 	Reconciliation *reconciliation.Client
+	Vault          *vaultexchange.Client
 }
 
 // Init -
@@ -39,6 +41,7 @@ func (a *API) Init(secretKey string, useSandbox bool, publicKey *string) {
 	a.Disputes = disputes.NewClient(*config)
 	a.Files = files.NewClient(*config)
 	a.Reconciliation = reconciliation.NewClient(*config)
+	a.Vault = vaultexchange.NewClient(*config)
 }
 
 // New -

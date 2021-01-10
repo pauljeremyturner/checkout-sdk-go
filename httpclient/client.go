@@ -102,6 +102,9 @@ func (c *HTTPClient) Post(path string, body interface{}, params *checkout.Params
 	c.setUserAgent(request)
 	c.setAuthorization(c.URI+path, request)
 	c.setIdempotencyKey(request, params)
+	c.setProvider(request, params)
+	c.setSourceID(request, params)
+	c.setCKOAuthorization(request, params)
 
 	response, err := c.HTTPClient.Do(request)
 	if err != nil {
