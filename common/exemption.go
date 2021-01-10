@@ -12,6 +12,10 @@ const (
 	SecureCorporatePayment Exemption = "secure_corporate_payment"
 	// TrustedListing ...
 	TrustedListing Exemption = "trusted_listing"
+	// SCADelegation ...
+	SCADelegation Exemption = "sca_delegation"
+	// TransactionRiskAssessment ...
+	TransactionRiskAssessment Exemption = "transaction_risk_assessment"
 )
 
 func (c Exemption) String() string {
