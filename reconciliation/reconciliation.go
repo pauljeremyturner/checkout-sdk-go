@@ -82,7 +82,7 @@ type (
 		Type                string      `json:"type,omitempty"`
 		ID                  string      `json:"id,omitempty"`
 		ProcessedOn         string      `json:"processed_on,omitempty"`
-		ResponseCode        uint64      `json:"response_code,omitempty"`
+		ResponseCode        string      `json:"response_code,omitempty"`
 		ResponseDescription string      `json:"response_description,omitempty"`
 		Breakdown           []Breakdown `json:"breakdown,omitempty"`
 	}
